@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/lassebunk/metamagic.png)](http://travis-ci.org/lassebunk/metamagic)
+[![CI](https://github.com/willnet/metamagic/actions/workflows/ci.yml/badge.svg)](https://github.com/willnet/metamagic/actions/workflows/ci.yml)
 
 ![Meta Magic Motherfuckers](http://i.imgur.com/4KtY4qX.png)
 
@@ -407,8 +407,8 @@ custom key_one: "My first key",
 Requirements
 ------------
 
-* Rails 3.0 or above
-* Ruby 1.9 or above
+* Rails 8.0 or above
+* Ruby 3.4 or above
 
 Contributing
 ------------

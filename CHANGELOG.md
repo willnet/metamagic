@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Requires Ruby 3.4 or above and Rails 8.0 or above.
+* Tags with the same sort order (e.g. `description` and `keywords`) are now rendered in the order they were defined. `Array#sort` is not stable, so their order previously depended on the Ruby version.
+
 ## Version 3.1.6
 
 * Revert changes from 3.1.5 because of regression errors.

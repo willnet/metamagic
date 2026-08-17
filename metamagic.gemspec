@@ -18,7 +18,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rails", ">= 3.0.0"
-  
-  spec.add_development_dependency "sqlite3"
+  spec.required_ruby_version = ">= 3.4.0"
+
+  spec.add_dependency "rails", ">= 8.0.0"
+
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "nokogiri"
 end
