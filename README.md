@@ -407,8 +407,8 @@ custom key_one: "My first key",
 Requirements
 ------------
 
-* Rails 3.0 or above
-* Ruby 1.9 or above
+* Rails 8.0 or above
+* Ruby 3.4 or above
 
 Contributing
 ------------

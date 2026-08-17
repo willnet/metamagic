@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Requires Ruby 3.4 or above and Rails 8.0 or above.
+
 ## Version 3.1.6
 
 * Revert changes from 3.1.5 because of regression errors.
