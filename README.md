@@ -8,7 +8,32 @@ Metamagic
 Metamagic is a simple [Ruby on Rails](http://rubyonrails.org) plugin for creating meta tags.
 It supports regular meta tags, [OpenGraph](http://ogp.me/) (Facebook), [Twitter Cards](https://dev.twitter.com/docs/cards/types/summary-card), and custom tags.
 
-See the [changelog](https://github.com/lassebunk/metamagic/blob/master/CHANGELOG.md) for changes in version 3.0.
+See the [changelog](CHANGELOG.md) for recent changes.
+
+About this fork
+---------------
+
+This is a fork of [lassebunk/metamagic](https://github.com/lassebunk/metamagic),
+which has not been updated since March 2015. The goal of the fork is to keep the
+gem working on current versions of Ruby and Rails. The public API is unchanged,
+so existing code keeps working as documented below.
+
+What is different from upstream:
+
+* **Runs on current Ruby and Rails.** Ruby 3.4 or above and Rails 8.0 or above
+  are now required. CI moved from Travis CI to GitHub Actions and runs the test
+  suite against Ruby 3.4 and 4.0 on Rails 8.0 and 8.1.
+* **Action View is loaded lazily.** `Metamagic::ViewHelper` is included into
+  `ActionView::Base` from a Railtie initializer via
+  `ActiveSupport.on_load(:action_view)`. Upstream referenced `ActionView::Base`
+  directly at require time, which forced Action View to load during
+  `Bundler.require` — before the application had applied its
+  `config.action_view` settings, so some of them could silently fail to take
+  effect. As a side effect, `require "metamagic"` now also works outside a
+  Rails application.
+* **Tags with the same sort order render in definition order.** `Array#sort` is
+  not stable, so the relative order of e.g. `description` and `keywords` used to
+  depend on the Ruby version.
 
 Installation
 ------------
@@ -16,10 +41,13 @@ Installation
 In your *Gemfile*:
 
 ```ruby
-gem 'metamagic'
+gem 'metamagic', github: 'willnet/metamagic'
 ```
-  
+
 Then run `bundle install`.
+
+The `metamagic` gem on RubyGems is the 2015 upstream release; this fork is not
+published as a gem, so it has to be installed from Git.
 
 Examples
 --------
@@ -410,6 +438,8 @@ Requirements
 * Rails 8.0 or above
 * Ruby 3.4 or above
 
+CI runs the test suite against Ruby 3.4 and 4.0 on Rails 8.0 and 8.1.
+
 Contributing
 ------------
 
@@ -423,6 +453,7 @@ Contributing
 Contributors
 ------------
 
-* [See the list of contributors](https://github.com/lassebunk/metamagic/graphs/contributors)
+* [Contributors to the original project](https://github.com/lassebunk/metamagic/graphs/contributors)
+* [Contributors to this fork](https://github.com/willnet/metamagic/graphs/contributors)
 
 Copyright (c) 2010-2014 [Lasse Bunk](http://lassebunk.dk), released under the MIT license
