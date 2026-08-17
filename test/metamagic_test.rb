@@ -79,7 +79,7 @@ class MetamagicTest < ActionView::TestCase
     keywords %w{one two three}
     title "My Title"
 
-    assert_equal_segment %{<title>My Title</title>\n<meta content="one, two, three" name="keywords" />\n<meta content="My description." name="description" />\n<meta content="http://test.com/image.png" property="og:image" />\n<meta content="summary" name="twitter:card" />},
+    assert_equal_segment %{<title>My Title</title>\n<meta content="My description." name="description" />\n<meta content="one, two, three" name="keywords" />\n<meta content="http://test.com/image.png" property="og:image" />\n<meta content="summary" name="twitter:card" />},
                  metamagic
   end
 end

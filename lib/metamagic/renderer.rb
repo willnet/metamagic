@@ -91,7 +91,11 @@ module Metamagic
     attr_writer :separator
 
     def render
-      tags.sort.map(&:to_html).compact.join("\n").html_safe
+      # `sort` is not guaranteed to be stable, so tags that compare equal (e.g.
+      # two MetaTags) would come out in a different order depending on the Ruby
+      # version. Fall back to the order the tags were defined in.
+      sorted_tags = tags.each_with_index.sort_by { |tag, index| [tag.sort_order, tag.class.name, index] }.map(&:first)
+      sorted_tags.map(&:to_html).compact.join("\n").html_safe
     end
 
     def method_missing(*args)
