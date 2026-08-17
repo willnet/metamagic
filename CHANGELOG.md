@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* `Metamagic::ViewHelper` is now included into `ActionView::Base` from a Railtie initializer via `ActiveSupport.on_load(:action_view)`. Previously `require "metamagic"` referenced `ActionView::Base` directly, which forced Action View to load during `Bundler.require` — before the application had applied its `config.action_view` settings. Requiring the gem outside a Rails application now works as well.
 * Requires Ruby 3.4 or above and Rails 8.0 or above.
 * Tags with the same sort order (e.g. `description` and `keywords`) are now rendered in the order they were defined. `Array#sort` is not stable, so their order previously depended on the Ruby version.
 

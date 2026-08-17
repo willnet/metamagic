@@ -1,3 +1,6 @@
+require "active_support/core_ext/object/blank"
+require "active_support/core_ext/string/output_safety"
+
 %w{
   version
   tag
@@ -12,4 +15,4 @@
   view_helper
 }.each { |f| require "metamagic/#{f}" }
 
-ActionView::Base.send :include, Metamagic::ViewHelper
+require "metamagic/railtie" if defined?(Rails::Railtie)
